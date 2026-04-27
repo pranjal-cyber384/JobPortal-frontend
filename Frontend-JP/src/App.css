@@ -1,0 +1,376 @@
+/* --- 💎 Grand Design System (Modified & Colorful) --- */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800;900&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap');
+
+:root {
+  --primary: #4361ee;
+  --secondary: #7209b7;
+  --accent: #4cc9f0;
+  --aurora-pink: #f72585;
+  --dark-text: #1e293b;
+  --glass: rgba(255, 255, 255, 0.85);
+  --grad: linear-gradient(135deg, #4361ee 0%, #7209b7 100%);
+  --shadow-elite: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* --- 🌟 The Page Wrapper (Colorful Mesh Background) --- */
+.page-wrapper, .auth-container {
+  min-height: 100vh;
+  background-color: #f8faff;
+  /* Multi-color Mesh Gradient - Pure White hat gaya */
+  background-image: 
+    radial-gradient(circle at 0% 0%, rgba(67, 97, 238, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 100% 0%, rgba(247, 37, 133, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(76, 201, 240, 0.1) 0%, transparent 50%),
+    url('https://www.transparenttextures.com/patterns/cubes.png');
+  background-attachment: fixed;
+  padding-top: 20px;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--dark-text);
+  overflow-x: hidden;
+}
+
+/* --- 🚀 Modern Elite Navbar --- */
+.navbar-modern, .custom-navbar {
+  background: var(--glass) !important;
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  padding: 18px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-brand, .navbar-brand strong {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2rem;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 900;
+}
+
+/* --- 🔥 Grand Home Page Components --- */
+.hero-grand-section {
+  min-height: 85vh;
+  padding: 80px 0;
+}
+.hero-visual-wrapper {
+    border-radius: 50rem;
+   
+}
+.hero-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 5rem;
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--dark-text);
+}
+
+.text-maroon {
+    color: #6f141f;
+}
+ 
+/* --- Extra Grand Visual Elements --- */
+.main-glass-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 30px;
+  width: 280px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  position: relative;
+  z-index: 5;
+  margin: 0 auto;
+}
+
+.pulse-icon {
+  font-size: 2rem;
+  animation: pulse-glow 2s infinite;
+}
+
+/* Background Decorative Orbs taaki khali na lage */
+.decorative-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  z-index: 1;
+}
+
+.orb-1 { width: 150px; height: 150px; background: var(--primary); top: 10%; right: 10%; opacity: 0.1; }
+.orb-2 { width: 200px; height: 200px; background: var(--aurora-pink); bottom: 10%; left: 0%; opacity: 0.1; }
+
+@keyframes pulse-glow {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+
+
+.hero-title span {
+  background: linear-gradient(to right, var(--primary), var(--aurora-pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.badge-glow {
+  display: inline-block;
+  padding: 8px 20px;
+  background: white;
+  border-radius: 50px;
+  box-shadow: 0 10px 25px rgba(67, 97, 238, 0.15);
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 0.85rem;
+  border: 1px solid rgba(67, 97, 238, 0.1);
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: #64748b;
+  max-width: 600px;
+}
+
+/* Search Glass */
+.search-glass-wrapper {
+  background: white;
+  padding: 12px;
+  border-radius: 100px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+  border: 1px solid #f1f5f9;
+}
+
+.search-glass-wrapper .form-control {
+  border: none !important;
+  font-weight: 600;
+  padding: 0 20px;
+}
+
+.v-divider { width: 1px; height: 35px; background: #e2e8f0; margin: 0 15px; }
+
+/* Aurora Buttons */
+.btn-aurora {
+  background: var(--grad);
+  color: white !important;
+  border-radius: 50px;
+  padding: 12px 35px;
+  font-weight: 800;
+  border: none;
+  box-shadow: 0 10px 20px rgba(67, 97, 238, 0.3);
+}
+
+/* Stats */
+.stat-item h4 { font-weight: 800; color: var(--primary); margin-bottom: 0; }
+.stat-item p { color: #64748b; font-weight: 600; font-size: 0.9rem; }
+
+/* 👤 Profile Fixes (Keep your Logic, Add Colors) */
+.profile-card, .auth-card {
+  border: none !important;
+  border-radius: 35px !important;
+  background: var(--glass) !important;
+  backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-elite) !important;
+  padding: 40px !important;
+}
+
+.profile-img {
+  width: 150px !important;
+  height: 150px !important;
+  border-radius: 50% !important;
+  border: 6px solid white !important;
+  box-shadow: 0 10px 30px rgba(67, 97, 238, 0.2) !important;
+  object-fit: cover;
+  margin-bottom: 25px;
+}
+
+.row.mb-3 {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 15px;
+  padding: 15px;
+  margin-bottom: 15px !important;
+  border-left: 5px solid var(--primary);
+  transition: 0.3s;
+}
+
+.row.mb-3:hover { transform: translateX(10px); background: white; }
+
+/* 💼 Job Cards & Tables */
+.card, .job-card-grand {
+  border: none !important;
+  border-radius: 25px !important;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background: white;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 50px rgba(67, 97, 238, 0.12) !important;
+}
+
+/* Category Cards */
+.category-aurora-card {
+  height: 280px;
+  border-radius: 30px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding: 25px;
+  color: white;
+  transition: 0.5s;
+}
+
+.cat-bg-img {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.category-aurora-card::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(to top, var(--card-color), transparent 80%);
+  z-index: 2;
+  opacity: 0.85;
+}
+
+.cat-content { position: relative; z-index: 3; }
+
+/* 🔘 Common Buttons */
+.btn {
+  border-radius: 12px !important;
+  font-weight: 700 !important;
+  padding: 10px 24px !important;
+  transition: 0.3s;
+  text-transform: uppercase;
+}
+
+.btn-primary {
+  background: var(--grad) !important;
+  border: none !important;
+  color: white !important;
+  box-shadow: 0 8px 20px rgba(67, 97, 238, 0.25) !important;
+}
+
+
+
+/* 🏆 High-End Badges (Keep your Colors) */
+.badge {
+  padding: 8px 14px !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+}
+
+.badge-success, .bg-success { background: rgba(46, 196, 182, 0.15) !important; color: #2ec4b6 !important; }
+.badge-danger, .bg-danger { background: rgba(231, 29, 54, 0.15) !important; color: #e71d36 !important; }
+
+/* 📍 Footer */
+.footer-grand {
+  background: white !important;
+  padding: 80px 0 40px !important;
+  position: relative;
+  border-top: 1px solid #eee;
+}
+
+.footer-grand::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 6px;
+  background: var(--grad);
+}
+
+/* Container for the cards */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Base Card Style */
+.category-aurora-card {
+  height: 300px; /* Uniform height */
+  border-radius: 30px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding: 30px;
+  color: white;
+  transition: all 0.4s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+/* Optional: Make the "Creative Design" card taller for a modern look */
+.category-aurora-card.tall {
+  grid-row: span 1; /* Change to span 2 if you want masonry style */
+}
+
+/* Image styling */
+.cat-bg-img {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  transition: transform 0.6s ease;
+}
+
+.category-aurora-card:hover .cat-bg-img {
+  transform: scale(1.1);
+}
+
+/* Gradient Overlay (Ab ye dark mode ke liye perfect hai) */
+.category-aurora-card::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.95) 10%, transparent 70%);
+  z-index: 2;
+}
+
+/* Content over image */
+.cat-content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+}
+
+.cat-content h3 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+/* Explore Button Inside Card */
+.btn-explore {
+  display: inline-block;
+  padding: 8px 25px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 700;
+  transition: 0.3s;
+}
+
+.btn-explore:hover {
+  background: white;
+  color: var(--bg-dark);
+  transform: translateY(-3px);
+}
+.btn1 {
+  padding: 5px 10px !important;
+}
