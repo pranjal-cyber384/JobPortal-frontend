@@ -79,6 +79,13 @@ The frontend is fully integrated with backend APIs and designed with a clean, re
 
 ---
 
+## 🔗Live Link
+
+https://jobportal-18c720.netlify.app/
+
+---
+
+
 ## 📂 Folder Structure
 
 src/
