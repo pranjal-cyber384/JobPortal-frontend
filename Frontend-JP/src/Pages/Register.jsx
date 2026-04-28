@@ -33,19 +33,7 @@ const Register = () => {
   }
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light bg-white custom-navbar">
-        <div className="container">
-          <a className="navbar-brand" href="#">JobPortal</a>
-          <button className="navbar-toggler" data-toggle="collapse" data-target="#navbarContent">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarContent">
-            <ul className="navbar-nav ml-auto">
-              <li className="nav-item"><a className="nav-link" href="#">Login</a></li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+     
       <div className="auth-container d-flex align-items-center">
         <div className="container">
           <div className="row justify-content-center">

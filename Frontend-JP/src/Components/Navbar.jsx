@@ -1,6 +1,6 @@
 import React, {useContext} from "react";
 import AuthContext from "../Context/AuthContext";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate  } from "react-router-dom";
 
 
 const Nav = () => {
@@ -52,6 +52,7 @@ const Nav = () => {
 
       
       <ul class="navbar-nav">
+
         {!isAuthenticated && (
         <li class="nav-item">
           
@@ -65,7 +66,6 @@ const Nav = () => {
            <Link class="btn btn-primary logout-btn mx-4" onClick={logout}>Logout</Link>
         </li>
         )}
-        
       </ul>
         
          

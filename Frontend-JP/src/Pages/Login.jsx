@@ -34,7 +34,9 @@ const Login = () => {
     setLoading(true);
     try {
   const res = await login(state);
-
+   if(!res || !res.success) {
+    throw new Error("User not found");
+   }
   const redirectPath =
     location.state?.from?.pathname ||
     (res.role === "admin" ? "/admin/dashboard" : "/");
