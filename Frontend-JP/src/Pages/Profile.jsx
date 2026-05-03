@@ -28,7 +28,7 @@ const Profile = () => {
              <div className="card profile-card text-center">
               <div className="card-body">
                 <img
-                  src={`http://localhost:3000${user?.profileImage}`}
+                  src={`${import.meta.env.VITE_API_BASE_URL}${user?.profileImage}`}
                   alt="profile"
                   className="profile-img mb-3"
                 />
