@@ -11,7 +11,6 @@ import adminRoutes from "./routes/adminRoutes.js";
 import {protect} from "./middlewares/authMiddleware.js";
 import morgan from "morgan";
 import cors from "cors";
-import fs from "fs";
 import path from "path";
 
 import recruiterRequest from "./models/recruiterRequest.js";
@@ -22,11 +21,7 @@ const app = express();
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(cors());
-const uploadPath = path.join(process.cwd(), "upload");
 
-if (!fs.existsSync(uploadPath)) {
-  fs.mkdirSync(uploadPath, { recursive: true });
-}
 app.use("/upload", express.static("upload"));
 
 app.use("/api/auth", authRoutes);
