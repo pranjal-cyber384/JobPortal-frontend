@@ -88,6 +88,7 @@ https://jobportal-18c720.netlify.app/
 
 ## 📂 Folder Structure
 
+```
 src/
 │
 ├── components/ # Reusable UI components
@@ -97,6 +98,8 @@ src/
 ├── App.css
 ├── App.jsx
 └── main.jsx
+
+```
 
 ---
 
@@ -115,12 +118,15 @@ VITE_API_BASE_URL=https://your-backend.onrender.com
 ## 📸 Screenshots
 
 <p align="center">
-  <img src="./public/screenshots/Screenshot 2026-04-27 193755.png" width="45%" />
-  <img src="./public/screenshots/Screenshot 2026-04-27 193929.png" width="45%" />
-  <img src="./public/screenshots/Screenshot 2026-04-27 194042.png" width="45%" />
-  <img src="./public/screenshots/Screenshot 2026-04-27 194112.png" width="45%" />
-  <img src="./public/screenshots/Screenshot 2026-04-27 194333.png" width="45%" />
-  <img src="./public/screenshots/Screenshot 2026-04-27 194559.png" width="45%" />
+  <img src="./public/screenshots/Screenshot 2026-05-04 000736.png" width="45%" />
+  <img src="./public/screenshots/Screenshot 2026-05-04 000834.png" width="45%" />
+  <img src="./public/screenshots/Screenshot 2026-05-04 002011.png" width="45%" />
+  <img src="./public/screenshots/Screenshot 2026-05-04 002038.png" width="45%" />
+  <img src="./public/screenshots/Screenshot 2026-05-04 002109.png" width="45%" />
+  <img src="./public/screenshots/Screenshot 2026-05-04 002206.png" width="45%" />
+  <img src="./public/screenshots/Screenshot 2026-05-04 002308.png" width="45%" />
+  <img src="./public/screenshots/Screenshot 2026-05-04 002400.png" width="45%" />
+  <img src="./public/screenshots/Screenshot 2026-05-04 002501.png" width="45%" />
 </p>
 
 ## 🚀 Getting Started
@@ -150,3 +156,4 @@ Make sure backend is running before starting the frontend.
 📄 Resume-maker
 🔔 Notifications (email / in-app)
 🌙 Dark mode UI
+

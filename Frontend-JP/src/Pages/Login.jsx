@@ -51,13 +51,12 @@ const Login = () => {
   };
   return (
     <>
-      <div className="auth-container d-flex align-items-center">
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-md-5">
-              <div className="card auth-card">
-                <div className="card-body">
+      <div className="auth-container">
+        <div className="auth-box">
                   <h3 className="text-center mb-4">Login</h3>
+                  <p className="text-center text-muted mb-4">
+                       Welcome back 👋 Login to continue
+                  </p>
                    {error ? <div className="alert alert-danger">{error}</div> : null}
                   <form onSubmit={submitHandler}>
                     <div className="form-group">
@@ -81,7 +80,7 @@ const Login = () => {
                        className="form-control"
                        placeholder="Enter password"
                        onChange={changeHandler}
-                       value={state.value}
+                       value={state.password}
                        required
                         />
                     </div>
@@ -93,12 +92,8 @@ const Login = () => {
                   <p className="text-center mt-3">
                     Don't have an account? <Link to="/user/register">Create an account</Link>
                   </p>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
-      </div>
     </>
   );
 };

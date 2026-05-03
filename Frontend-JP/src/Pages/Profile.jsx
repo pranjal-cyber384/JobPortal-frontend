@@ -24,7 +24,7 @@ const Profile = () => {
              <div className="container mt-5">
              <div className="row">
             {error ? <div className="alert alert-danger">{error}</div> : null}
-            <div className="col-md-4">
+            <div className="col-lg-4 col-md-5 mb-4">
              <div className="card profile-card text-center">
               <div className="card-body">
                 <img
@@ -40,50 +40,56 @@ const Profile = () => {
                       Edit Profile
                       </button>
                     </Link>
-              </div>
+               </div>
             </div>
           </div>
-          <div className="col-md-8">
+          <div className="col-lg-8 col-md-7">
             <div className="card profile-card">
               <div className="card-body">
-                <h5 className="mb-4">Profile Details</h5>
-                <div className="row mb-3">
-                  <div className="col-sm-4"><strong>Name</strong></div>
-                  <div className="col-sm-8">{user?.name}</div>
-                   </div>
-                   <div className="row mb-3">
-                    <div className="col-sm-4"><strong>Email</strong></div>
-                   <div className="col-sm-8">{user?.email}</div>
-                   </div>
-                   <div className="row mb-3">
-                   <div className="col-sm-4"><strong>Role</strong></div>
-                   <div className="col-sm-8">{user?.role}</div>
-                   </div>
-                   <div className="row mb-3">
-                   <div className="col-sm-4"><strong>Skills</strong></div>
-                   <div className="col-sm-8">{user?.skills}</div>
-                   </div>
-                   <div className="row mb-3">
-                   <div className="col-sm-4"><strong>Experience</strong></div>
-                   <div className="col-sm-8">{user?.experience}</div>
-                   </div>
+                <h5 className="profile-details-title">Profile Details</h5>
 
-                   <div className="row mb-3">
-                   <div className="col-sm-4"><strong>
-                    Resume</strong>
-                    </div>
-                   {user?.resume ? (
+                  <div className="profile-row row">
+                   <div className="col-sm-4 profile-label">Name</div>
+                   <div className="col-sm-8 profile-value">{user?.name}</div>
+                  </div>
+
+                 <div className="profile-row row">
+                   <div className="col-sm-4 profile-label">Email</div>
+                   <div className="col-sm-8 profile-value">{user?.email}</div>
+                 </div>
+
+                 <div className="profile-row row">
+                   <div className="col-sm-4 profile-label">Role</div>
+                   <div className="col-sm-8 profile-value">{user?.role}</div>
+                 </div>
+
+                 <div className="profile-row row">
+                    <div className="col-sm-4 profile-label">Skills</div>
+                    <div className="col-sm-8 profile-value">{user?.skills}</div>
+                 </div>
+
+                  <div className="profile-row row">
+                    <div className="col-sm-4 profile-label">Experience</div>
+                  <div className="col-sm-8 profile-value">{user?.experience}</div>
+                  </div>
+
+                  <div className="profile-row row">
+                    <div className="col-sm-4 profile-label">Resume</div>
                     <div className="col-sm-8">
-                    <a href= {`http://localhost:3000${user?.resume}`} target="_blank">
-                    <button className="btn btn-sm btn-primary">
+                       {user?.resume ? (
+                     <button
+                      className="btn-resume"
+                      onClick={() =>
+                      window.open(`${import.meta.env.VITE_API_BASE_URL}${user?.resume}`, "_blank")
+                             }
+                            >
                       View Resume
                     </button>
-                    </a>
-                   </div>
-                    ) : (
-                   "No Resume Uploaded"
-                    )}
-                 </div>
+                     ) : (
+                    <span className="text-muted">No Resume</span>
+                   )}
+                </div>
+               </div>
               </div>
             </div>
           </div>

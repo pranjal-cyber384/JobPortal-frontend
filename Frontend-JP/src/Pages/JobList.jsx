@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import JobContext from "../Context/JobContext";
+import AuthContext from "../Context/AuthContext";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const JobListPage = () => {
@@ -11,10 +12,12 @@ const JobListPage = () => {
     pages,
     searchJobs,
   } = useContext(JobContext);
+  const {user} = useContext(AuthContext);
    const navigate = useNavigate();
   const [keyword, setKeyword] = useState("");
   const [location, setLocation] = useState("");
   const [jobType, setJobType] = useState("");
+  const [category, setCategory] = useState("");
 
   const locationHook = useLocation();
 
@@ -22,18 +25,20 @@ const JobListPage = () => {
 
  const keywordQuery = params.get("keyword") || "";
  const locationQuery = params.get("location") || "";
+ const categoryQuery = params.get("category") || "";
 
   
   useEffect(() => {
-    if(keywordQuery || locationQuery) {
+    if(keywordQuery || locationQuery || categoryQuery) {
       searchJobs({
         keyword: keywordQuery,
         location: locationQuery,
+        category: categoryQuery,
       });
     }
     else {
     fetchjobs(1, {});}
-  }, [keywordQuery, locationQuery]);
+  }, [keywordQuery, locationQuery, categoryQuery]);
 
  
 
@@ -42,6 +47,7 @@ const JobListPage = () => {
       keyword,
       location,
       jobType,
+      category,
     });
   };
 
@@ -49,17 +55,18 @@ const JobListPage = () => {
     setKeyword("");
     setLocation("");
     setJobType("");
+    setCategory("");
     fetchjobs(1, {});
   };
 
   return (
-        <div className="container mt-4">
+        <div className="container job-page">
 
-      <div className="card p-3 mb-4 shadow-sm">
+      <div className="filter-card">
 
-        <div className="row">
+        <div className="row g-3">
 
-          <div className="col-md-4">
+          <div className="col-md-3">
 
             <input
 
@@ -117,11 +124,39 @@ const JobListPage = () => {
 
           </div>
 
-          <div className="col-md-2 d-flex">
+          <div className="col-md-3">
+
+            <select
+
+              className="form-control"
+
+              value={category}
+
+              onChange={(e) => setCategory(e.target.value)}
+
+               >
+
+              <option value="">Categories</option>
+
+              <option value="it-tech">IT & Tech</option>
+
+              <option value="creative-design">Creative Design</option>
+
+              <option value="marketing">Marketing</option>
+
+              <option value="finance">Finance</option>
+
+            </select>
+
+          </div>
+
+          
+
+          <div className="col-md-12 d-flex justify-content-end gap-2">
 
             <button
 
-              className="btn btn1 btn-primary btn-block mr-2"
+              className="btn btn1 btn-primary mr-2"
 
               onClick={handleSearch}
 
@@ -133,7 +168,7 @@ const JobListPage = () => {
 
             <button
 
-              className="btn btn1 btn-secondary btn-block"
+              className="btn btn1 btn-secondary"
 
               onClick={resetFilters}
 
@@ -157,9 +192,9 @@ const JobListPage = () => {
 
             <div className="col-md-6 mb-4" key={job._id}>
 
-              <div className="card shadow-sm h-100">
+              <div className="job-card">
 
-                <div className="card-body">
+                <div className="job-card-body">
 
                   <h5>{job.title}</h5>
 
@@ -176,16 +211,13 @@ const JobListPage = () => {
                   </p>
 
                   <p className="mb-1">
-
-                    <strong>Type:</strong> {job.jobType}
-
+                    <span className="job-badge">{job.jobType}</span>
+                  </p>
+                   <p className="mb-1">
+                    <span className="job-badge">{job.category}</span>
                   </p>
 
-                  <p className="mb-2">
-
-                    <strong>Salary:</strong> {job.salary}
-
-                  </p>
+                  <h6 className="salary">₹ {job.salary}</h6>
 
                    <p className="text-muted">
 
@@ -197,7 +229,7 @@ const JobListPage = () => {
 
                     <button
 
-                      className="btn btn-sm btn-info"
+                      className="btn-view"
 
                       onClick={() => navigate(`/jobs/${job._id}`)}
 
@@ -206,10 +238,10 @@ const JobListPage = () => {
                        View
 
                     </button>
-
+                   {user?.role === "admin" && (
                     <button
 
-                      className="btn btn-sm btn-danger"
+                      className="btn-delete"
 
                       onClick={() => deleteJob(job._id)}
 
@@ -218,7 +250,7 @@ const JobListPage = () => {
                       Delete
 
                     </button>
-
+                      )}
                   </div>
 
                 </div>

@@ -17,9 +17,11 @@ const ApplyJobPage = () => {
       [e.target.name]: e.target.value,
     });
   };
+  const [fileName, setFileName] = useState("");
 
   const handleFileChange = (e) => {
     setResume(e.target.files[0]);
+    setFileName(e.target.files[0]?.name);
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,12 +37,17 @@ const ApplyJobPage = () => {
     }
   };
   return (
-    <div className="container mt-4">
-      <div className="card p-4 shadow-sm">
-        <h3 className="mb-3">Apply for Job</h3>
+    <div className="apply-page fade-in">
+      <div className="apply-card">
+        <h3 className="mb-2">Apply for Job</h3>
+         <p className="text-muted mb-4">
+        Submit your application and stand out to recruiters 🚀
+        </p>
         <form onSubmit={handleSubmit}>
+           <div className="form-group">
+            <label>Cover Letter</label>
           <textarea
-            className="form-control mb-3"
+            className="form-control custom-textarea"
             name="coverLetter"
             rows="5"
             placeholder="Write your cover letter..."
@@ -48,15 +55,23 @@ const ApplyJobPage = () => {
             onChange={handleChange}
             required
           />
-          <input
-            type="file"
-            className="form-control mb-3"
-            onChange={handleFileChange}
-            required
-          />
+          </div>
+            <div className="form-group mt-3">
+          <label>Upload Resume</label>
+
+          <div className="file-upload-box">
+            <input
+              type="file"
+              onChange={handleFileChange}
+              required
+            />
+            <span> {fileName ? fileName : "📄 Choose your resume (PDF)"}</span>
+             </div>
+            </div>
+          
           <button
             type="submit"
-            className="btn btn-primary"
+            className="btn-apply1 mt-4"
             disabled={loading}
           >
             {loading ? "Applying..." : "Apply"}

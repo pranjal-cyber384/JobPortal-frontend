@@ -4,17 +4,19 @@ import {Link, useNavigate } from "react-router-dom";
 const Home = () => {
   const [keyword, setKeyword] = useState("");
   const [location, setLocation] = useState("");
+  
+  
   const navigate = useNavigate();
 
    const handleSearch = () => {
      navigate(`/all/jobs?keyword=${keyword}&location=${location}`);
   };
-
-  const categories = [
-    { name: "IT & Tech", img: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=600", color: "#4361ee" },
-    { name: "Creative Design", img: "https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=600", color: "#f72585" },
-    { name: "Marketing", img: "https://images.unsplash.com/photo-1557838923-2985c318be48?q=80&w=600", color: "#4cc9f0" },
-    { name: "Finance", img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=600", color: "#7209b7" }
+ 
+  const Categories = [
+    { name: "IT & Tech", value: "it-tech", img: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=600", color: "#4361ee" },
+    { name: "Creative Design", value: "creative-design", img: "https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=600", color: "#f72585" },
+    { name: "Marketing", value: "marketing", img: "https://images.unsplash.com/photo-1557838923-2985c318be48?q=80&w=600", color: "#4cc9f0" },
+    { name: "Finance", value: "finance", img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=600", color: "#7209b7" }
   ];
 
   return (
@@ -74,7 +76,7 @@ const Home = () => {
                   <div className="progress mb-2" style={{height: '8px', borderRadius: '10px', background: 'rgba(255,255,255,0.1)'}}>
                     <div className="progress-bar" style={{width: '75%', background: 'var(--grad)'}}></div>
                   </div>
-                  <small className="text-muted fw-bold">95% Success Rate this week</small>
+                  <small className="text-white fw-bold">95% Success Rate this week</small>
                 </div>
                 <div className="floating-badge shadow-lg" style={{top: '10%', right: '-10%'}}>
                   <span className="me-2">🔥</span> 200+ Hired Today
@@ -94,12 +96,12 @@ const Home = () => {
            <p className="text-muted">Find the specialized role that fits your talent perfectly</p>
         </div>
         <div className="category-grid">
-          {categories.map((category, i) => (
+          {Categories.map((category, i) => (
             <div className="category-aurora-card" key={i} style={{'--card-color': category.color}}>
               <img src={category.img} alt={category.name} className="cat-bg-img" />
               <div className="cat-content">
                 <h4 className="fw-bold">{category.name}</h4>
-                <a href="#" className="btn-explore">Explore</a>
+                <Link to={`/all/jobs?category=${category.value}`} className="btn-explore" >Explore</Link>
               </div>
             </div>
           ))}

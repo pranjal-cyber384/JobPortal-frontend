@@ -1,5 +1,4 @@
 import { createContext, useEffect, useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 import api from "../service/api";
 const AuthContext = createContext();
@@ -9,9 +8,6 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-
-  const navigate = useNavigate();
-  
   useEffect(() => {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
@@ -61,7 +57,6 @@ export const AuthProvider = ({ children }) => {
     setToken("");
      
     localStorage.removeItem(STORAGE_KEY);
-    navigate("/");
   };
 
 const login = async (payload) => {

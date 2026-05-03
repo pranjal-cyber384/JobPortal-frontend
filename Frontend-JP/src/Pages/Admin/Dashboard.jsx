@@ -7,46 +7,41 @@ const AdminDashboard = () => {
     fetchStats();
   }, []);
 
-  if (!stats) return <p>Loading...</p>;
+  if (!stats) {
   return (
-    <div className="container mt-4">
-      <h3 className="mb-4">Admin Dashboard</h3>
-      <div className="row">
-        <div className="col-md-3">
-          <div className="card p-3 text-center shadow">
-            <h5>Total Users</h5>
-            <h3>{stats.totalUser}</h3>
-          </div>
-        </div>
+    <div className="text-center mt-5">
+      <div className="spinner-border"></div>
+    </div>
+     );
+    }
+  return (
+    <div className="admin-dashboard fade-in">
+      <h3 className="dashboard-title">Admin Dashboard</h3>
+      <div className="stats-grid">
+    <div className="stat-card">
+      <p>👥 Total Users</p>
+      <h2>{stats.totalUser}</h2>
+     </div>
 
-        <div className="col-md-3">
-          <div className="card p-3 text-center shadow">
-            <h5>Total Jobs</h5>
-            <h3>{stats.totalJob}</h3>
-          </div>
-        </div>
+    <div className="stat-card">
+      <p>💼 Total Jobs</p>
+      <h2>{stats.totalJob}</h2>
+    </div>
 
-        <div className="col-md-3">
-          <div className="card p-3 text-center shadow">
-            <h5>Applications</h5>
-            <h3>{stats.totalApplications}</h3>
-          </div>
-        </div>
+     <div className="stat-card">
+      <p>📄 Applications</p>
+      <h2>{stats.totalApplications}</h2>
+     </div>
 
-        <div className="col-md-3">
-          <div className="card p-3 text-center shadow">
-            <h5>Recruiters</h5>
-            <h3>{stats.recruiter}</h3>
-          </div>
-        </div>
+      <div className="stat-card">
+        <p>🏢 Recruiters</p>
+       <h2>{stats.recruiter}</h2>
+      </div>
 
-        <div className="col-md-3 mt-3">
-          <div className="card p-3 text-center shadow">
-            <h5>Job Seekers</h5>
-            <h3>{stats.jobseeker}</h3>
-          </div>
-        </div>
-
+      <div className="stat-card">
+        <p>🧑‍💻 Job Seekers</p>
+        <h2>{stats.jobseeker}</h2>
+      </div>
       </div>
     </div>
   );

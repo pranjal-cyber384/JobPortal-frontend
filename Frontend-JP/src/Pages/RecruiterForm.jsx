@@ -35,10 +35,13 @@ const RecruiterForm = () => {
      <>
       <div className="container mt-5 mb-5">
         <div className="row justify-content-center">
-          <div className="col-md-8">
+          <div className="col-lg-6 col-md-8">
             <div className="card recruiter-card">
               <div className="card-body">
                 <h4 className="mb-4 text-center">Become a Recruiter</h4>
+                <p className="text-center text-muted mb-4">
+                     Submit your details to start posting jobs 🚀
+                </p>
                 <form encType="multipart/form-data" onSubmit={submitHandler}  >
                   <div className="form-group">
                     <label>Company Name</label>
@@ -62,8 +65,11 @@ const RecruiterForm = () => {
                     <label>Upload Verification Document</label>
                     <input type="file"
                      name="document"
-                    className="form-control-file"
+                    className="form-control"
                     onChange={handleFileChange} />
+                    <small className="text-muted">
+                       Upload company proof (PDF/Image)
+                    </small>
                   </div>
                   <div className="text-center mt-4">
                     <button type="submit" className="btn btn-primary px-4" >Submit Request</button>

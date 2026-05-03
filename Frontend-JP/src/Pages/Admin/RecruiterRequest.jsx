@@ -46,17 +46,25 @@ const RecruiterRequests = () => {
       console.error("Reject Error:", err);
     }
   };
-
   return (
-    <div className="container mt-5">
-      <h4 className="mb-4">Recruiter Requests</h4>
+  <div className="admin-page fade-in">
+
+    {/* HEADER */}
+    <div className="admin-header">
+      <h3>Recruiter Requests</h3>
+    </div>
+
+    <div className="admin-card">
 
       {loading ? (
-        <p>Loading...</p>
+        <div className="text-center">
+          <div className="spinner-border"></div>
+        </div>
       ) : (
         <div className="table-responsive">
-          <table className="table table-bordered table-hover">
-            <thead className="thead-light">
+
+          <table className="admin-table">
+            <thead>
               <tr>
                 <th>#</th>
                 <th>Name</th>
@@ -71,57 +79,74 @@ const RecruiterRequests = () => {
             <tbody>
               {requests.length > 0 ? (
                 requests.map((req, index) => (
-                  <tr key={req._id}>
+                  <tr
+                    key={req._id}
+                    className={`status-${req.status}-row`}
+                  >
                     <td>{index + 1}</td>
+
                     <td>{req.user?.name || "N/A"}</td>
+
                     <td>{req.companyName}</td>
+
                     <td>{req.companyMail}</td>
+
                     <td>
                       {req.document ? (
-                        <a
-                          href={req.document}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="btn btn-sm btn-info"
+                        <button
+                          className="btn-view-doc"
+                          onClick={() =>
+                            window.open(
+                              `${import.meta.env.VITE_API_BASE_URL}${req.document}`,
+                              "_blank"
+                            )
+                          }
                         >
                           View
-                        </a>
+                        </button>
                       ) : (
-                        "No File"
+                        <span className="text-muted small">
+                          No File
+                        </span>
                       )}
                     </td>
-                    
+
+                    {/* STATUS */}
                     <td>
                       <span
-                        className={`badge ${
+                        className={`status-badge ${
                           req.status === "approved"
-                            ? "badge-success"
+                            ? "status-approved"
                             : req.status === "rejected"
-                            ? "badge-danger"
-                            : "badge-warning"
+                            ? "status-rejected"
+                            : "status-pending"
                         }`}
                       >
                         {req.status}
                       </span>
                     </td>
 
+                    {/* ACTIONS */}
                     <td>
-                      <button
-                        className="btn btn-success btn-sm mr-2"
-                        onClick={() => handleApprove(req._id)}
-                        disabled={req.status === "approved"}
-                      >
-                        Approve
-                      </button>
+                      <div className="action-buttons">
+                        <button
+                          className="btn-approve"
+                          onClick={() => handleApprove(req._id)}
+                          disabled={req.status === "approved"}
+                        >
+                          Approve
+                        </button>
 
-                      <button
-                        className="btn btn-danger btn-sm"
-                        onClick={() => handleReject(req._id)}
-                        disabled={req.status === "rejected"}
-                      >
-                        Reject
-                      </button>
+                        <button
+                          className="btn-reject"
+                          onClick={() => handleReject(req._id)}
+                          disabled={req.status === "rejected"}
+                        >
+                          Reject
+                        </button>
+                      </div>
                     </td>
+
                   </tr>
                 ))
               ) : (
@@ -132,11 +157,15 @@ const RecruiterRequests = () => {
                 </tr>
               )}
             </tbody>
+
           </table>
+
         </div>
       )}
     </div>
-  );
+  </div>
+);
+  
 };
 
 export default RecruiterRequests;

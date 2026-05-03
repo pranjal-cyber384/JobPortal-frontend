@@ -16,7 +16,8 @@ const UsersPage = () => {
   }, [page]);
 
   return (
-    <div className="container mt-4">
+      <div className="admin-page fade-in">
+      <div className="admin-header">
       <h3 className="mb-4">Manage Users</h3>
       <input
         type="text"
@@ -32,11 +33,12 @@ const UsersPage = () => {
       >
         Search
       </button>
-
+      </div>
       {loading ? (
         <div className="spinner-border"></div>
       ) : (
         <>
+           <div className="admin-card">
           <table className="table table-bordered">
             <thead>
               <tr>
@@ -52,11 +54,15 @@ const UsersPage = () => {
                 <tr key={user._id}>
                   <td>{user.name}</td>
                   <td>{user.email}</td>
-                  <td>{user.role}</td>
+                  <td>
+                    <span className={`role-badge ${user.role}`}>
+                     {user.role}
+                    </span>
+                  </td>
 
                   <td>
                     <button
-                      className="btn btn-danger btn-sm"
+                      className="btn-delete-user"
                       onClick={() => deleteUser(user._id)}
                     >
                       Delete
@@ -66,7 +72,8 @@ const UsersPage = () => {
               ))}
             </tbody>
           </table>
-          <div className="d-flex justify-content-center">
+          </div>
+          <div className="admin-pagination">
             <button
               className="btn btn-secondary me-2"
               disabled={page === 1}

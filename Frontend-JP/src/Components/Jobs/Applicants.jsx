@@ -33,11 +33,11 @@ useEffect(() => {
   const getBadge = (status) => {
     if (status === "accepted") return "success";
     if (status === "rejected") return "danger";
-    return "warning";
+    // return "warning";
   };
 
   return (
-    <div className="glass-card p-3 fade-in">
+     <div className="applicants-page fade-in">
 
       <h3 className="mb-4">
         Applicants ({applicants?.length || 0})
@@ -52,12 +52,12 @@ useEffect(() => {
           No applications for this job yet.
         </div>
       ) : (
-        <div className="row">
+        <div className="row applicant-body">
 
           {applicants.map((applicant) => (
             <div key={applicant._id} className="col-md-6 mb-3">
 
-              <div className="card shadow-sm p-3">
+              <div className="applicant-card">
 
                 
                 <h5>{applicant.applicant?.name}</h5>
@@ -66,8 +66,11 @@ useEffect(() => {
                 </p>
 
               
-                <span className={`badge bg-${getBadge(applicant.status)} mb-2`}>
-                  {applicant.status}
+                <span className={`badge bg-${getBadge(status)} mb-2`}>
+                      <span className={`status-badge ${applicant.status}`}>
+                       {applicant.status}
+                      </span>
+                  
                 </span>
 
               
@@ -81,36 +84,38 @@ useEffect(() => {
                   <strong>Cover Letter:</strong>
                 </p>
                 <p className="small">
-                  {applicant.coverLetter}
+                  {applicant.coverLetter?.substring(0, 200)}...
                 </p>
 
                 
                 <a
-                  href={`http://localhost:3000${applicant.resume}`}
+                  href={`${import.meta.env.VITE_API_BASE_URL}${applicant.resume}`}
                   target="_blank"
                   rel="noreferrer"
-                  className="btn btn-secondary btn-sm mb-2"
+                  className="btn-resume mb-2"
                 >
                   View Resume
                 </a>
 
-                
+                 {applicant.status === "pending" && (
                 <div className="d-flex justify-content-between mt-2">
+                    
                    <button
-                    className="btn btn-success btn-sm"
+                    className="btn-accept"
                     onClick={() => handleStatus(applicant._id, "approve")}
                     >
                      Accept
                     </button>
 
                     <button
-                    className="btn btn-danger btn-sm"
+                    className="btn-reject"
                       onClick={() => handleStatus(applicant._id, "reject")}
                       >
                        Reject
                       </button>
-                </div>
-
+                      
+                    </div>
+                     )}
               </div>
 
             </div>

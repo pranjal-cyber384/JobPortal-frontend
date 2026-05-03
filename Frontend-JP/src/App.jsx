@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import Nav from "./Components/Navbar";
 import Home from "./Pages/Home";
 import Register from "./Pages/Register";
@@ -25,18 +26,27 @@ import "./App.css"
 const App = () => {
    return (
     <>
-  
       <Nav />
-
       <main className="app-shell">
-        <div className="page-wrapper">
+      <div className="page-wrapper">
         <Routes>
          <Route path="/" element={<Home />} />
          <Route path="/user/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/edit/profile" element={<EditProfile/>} />
-          <Route path="/recruiter/form" element={<RecruiterForm/>} />
+          <Route path="/profile" element={
+            <ProtectedRoute>
+            <Profile />
+            </ProtectedRoute>} />
+          <Route path="/edit/profile" element={
+            <ProtectedRoute>
+            <EditProfile/>
+            </ProtectedRoute>
+            } />
+          <Route path="/recruiter/form" element={
+            <ProtectedRoute>
+            <RecruiterForm/>
+            </ProtectedRoute>
+            } />
 
 
           <Route path="/admin/request" element={
@@ -70,16 +80,29 @@ const App = () => {
               <ApplyJobPage />
               </ProtectedRoute>
               } />
-            <Route path="/my-applications" element={<MyApplicationsPage />} />
-            <Route path="/recruiter/applicants/:jobId" element={<ApplicantsPage />} />
-            <Route path="/admin/dashboard" element={<AdminDashboard />} />
-            <Route path="/admin/users" element={<UsersPage />} />
-        </Routes>
-        </div>
+            <Route path="/my-applications" element={
+              <ProtectedRoute>
+              <MyApplicationsPage />
+              </ProtectedRoute>
+              } />
+            <Route path="/recruiter/applicants/:jobId" element={
+              <ProtectedRoute>
+              <ApplicantsPage />
+              </ProtectedRoute>
+              } />
+            <Route path="/admin/dashboard" element={
+              <ProtectedRoute>
+              <AdminDashboard />
+              </ProtectedRoute>
+              } />
+            <Route path="/admin/users" element={
+              <ProtectedRoute>
+              <UsersPage />
+              </ProtectedRoute>
+              } />
+            </Routes>
+      </div>
       </main>
-       
-
-
       <Footer/>
     </>
    )

@@ -83,13 +83,15 @@ const handleSubmit = async (e) => {
   }
 };
   return (
-    <div className="glass-card p-3 fade-in">
-
-      <div className="card shadow-sm p-4">
+     <div className="form-page fade-in">
+      <div className="form-card">
 
         <h3 className="mb-3">Edit Job</h3>
-
+         
         <form onSubmit={handleSubmit}>
+          <div className="form-grid">
+            <div className="form-group">
+             <label>Job Title</label>
           <input
             className="form-control mb-2"
             name="title"
@@ -97,7 +99,10 @@ const handleSubmit = async (e) => {
             value={formData.title}
             onChange={handleChange}
           />
+           </div>
 
+           <div className="form-group">
+             <label>Company Name</label>
           <input
             className="form-control mb-2"
             name="companyName"
@@ -105,7 +110,10 @@ const handleSubmit = async (e) => {
             value={formData.companyName}
             onChange={handleChange}
           />
-
+           </div>
+           
+           <div className="form-group">
+             <label>Location</label>
           <input
             className="form-control mb-2"
             name="location"
@@ -113,7 +121,10 @@ const handleSubmit = async (e) => {
             value={formData.location}
             onChange={handleChange}
           />
-
+           </div>
+           
+           <div className="form-group">
+            <label>Salary</label>
           <input
             className="form-control mb-2"
             name="salary"
@@ -121,7 +132,10 @@ const handleSubmit = async (e) => {
             value={formData.salary}
             onChange={handleChange}
           />
+          </div>
 
+          <div className="form-group">
+             <label>Job Type</label>
           <select
             className="form-control mb-2"
             name="jobType"
@@ -134,7 +148,9 @@ const handleSubmit = async (e) => {
             <option value="internship">Internship</option>
             <option value="remote">Remote</option>
           </select>
-
+          </div>
+          <div className="form-group">
+            <label>Skills</label>
           <input
             className="form-control mb-2"
             name="skillsRequired"
@@ -142,7 +158,9 @@ const handleSubmit = async (e) => {
             value={formData.skillsRequired}
             onChange={handleChange}
           />
-
+          </div>
+          <div className="form-group">
+          <label>Job Description</label>
           <textarea
             className="form-control mb-3"
             name="description"
@@ -151,12 +169,12 @@ const handleSubmit = async (e) => {
             value={formData.description}
             onChange={handleChange}
           />
-
+           </div>
           <div className="d-flex justify-content-between">
 
             <button
               type="button"
-              className="btn btn-secondary"
+              className="btn-cancel"
               onClick={() => navigate(-1)}
             >
               Cancel
@@ -164,14 +182,14 @@ const handleSubmit = async (e) => {
 
             <button
               type="submit"
-              className="btn btn-primary"
+              className="btn-submit"
               disabled={loading}
             >
               {loading ? "Updating..." : "Update Job"}
             </button>
 
           </div>
-
+          </div>
         </form>
 
       </div>

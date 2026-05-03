@@ -35,15 +35,14 @@ const Register = () => {
     <>
      
       <div className="auth-container d-flex align-items-center">
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-md-6">
-              <div className="card auth-card">
-                <div className="card-body">
+        <div className="auth-box">
                   <h3 className="text-center mb-4">Register</h3>
+                     <p className="text-center text-muted mb-4">
+                    Start your journey 🚀
+                     </p>
                     {error ? <div className="alert alert-danger">{error}</div> : null}
                   <form onSubmit={submitHandler}>
-                    <div className="form-group">
+                    <div className="form-group mb-3">
                       <label>Name</label>
                       <input
                         className="form-control"
@@ -56,7 +55,7 @@ const Register = () => {
                         />
                     </div>
 
-                    <div className="form-group">
+                    <div className="form-group mb-3">
                       <label>Email</label>
                         <input
                          className="form-control"
@@ -69,7 +68,7 @@ const Register = () => {
                          />
                     </div>
 
-                    <div className="form-group">
+                    <div className="form-group mb-4">
                       <label>Password</label>
                           <input
                           className="form-control"
@@ -81,20 +80,16 @@ const Register = () => {
                           required
                          />
                     </div>
-                    <button className="btn btn-primary btn-block" disabled={loading}>
+                    <button className="btn" disabled={loading}>
                       {loading ? "Registering..." : "REGISTER"}
                     </button>
                     </form>
                   <p className="text-center mt-3">
                     Already have an account? <Link to="/login">Login</Link>
                   </p>
-                </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
-  );
-};
+           </div>
+          </>
+        );
+      };
 export default Register;

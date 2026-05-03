@@ -22,47 +22,45 @@ const JobDetailsPage = () => {
 
 
   return (
-    <div className="glass-card p-3 fade-in">
+    <div className="job-details-page fade-in">
+  <div className="job-details-card">
 
-      <div className="card shadow-sm p-4">
+       <div className="job-header">
+         <h2>{job.title}</h2>
+         <h5 className="company">{job.companyName}</h5>
 
-        <h2>{job.title}</h2>
-
-        <h5 className="text-muted">{job.companyName}</h5>
-        <hr />
-        <p><strong>Location:</strong> {job.location}</p>
-        <p><strong>Job Type:</strong> {job.jobType}</p>
-        <p><strong>Experience:</strong> {job.experienceLevel}</p>
-        <p><strong>Salary:</strong> {job.salary}</p>
-        <p><strong>Skills Required:</strong> {job.skillsRequired}</p>
-        <p><strong>Deadline:</strong>{new Date(job.deadline).toLocaleDateString()}</p>
-        <hr />
-        <p>{job.description}</p>
-      
-        <div className="d-flex justify-content-between mt-4">
-          <button
-            className="btn btn-secondary"
-            onClick={() => navigate(-1)}
-          >
-            Back
-          </button>
-
-          <button
-            className="btn btn-primary"
-           onClick={() => job?._id && navigate(`/apply/${job._id}`)}
-           
-          >
-            Apply Now
-          </button>
-
-          <button
-            className="btn btn-warning"
-             onClick={() => job?._id && navigate(`/jobs/edit/${job._id}`)}
-           >
-           Edit Job
-          </button>
-             
+        <div className="job-meta">
+          <span>{job.location}</span>
+          <span>{job.jobType}</span>
+           <span>{job.category}</span>
+          <span>{job.experienceLevel}</span>
         </div>
+
+        <h4 className="salary">₹ {job.salary}</h4>
+      </div>
+        <div className="job-info">
+             <div className="skills">
+                 {job.skillsRequired?.split(",").map((skill, i) => (
+                 <span key={i}>{skill}</span>
+                ))}
+        </div>
+         <p><strong>Deadline:</strong> {new Date(job.deadline).toLocaleDateString()}</p>
+       </div>
+
+        <div className="job-description">
+         <h5>Job Description</h5>
+         <p>{job.description}</p>
+       </div>
+        <div className="job-actions">
+          <button className="btn-back" onClick={() => navigate(-1)}>Back</button>
+
+          <button
+            className="btn-apply"
+              onClick={() => job?._id && navigate(`/apply/${job._id}`)}
+             >
+              Apply Now
+          </button>
+       </div>
       </div>
     </div>
   );

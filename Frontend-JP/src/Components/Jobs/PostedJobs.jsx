@@ -21,44 +21,45 @@ const PostedJobsPage = () => {
   };
 
   return (
-    <div className="container mt-4">
+    <div className="dashboard-page fade-in">
       <h3 className="mb-4">My Posted Jobs</h3>
       {jobs.length === 0 ? (
         <div className="alert alert-info">
           No jobs posted yet
         </div>
       ) : (
-        <div className="row">
+        <div className="row g-4">
           {jobs.map((job) => (
-            <div key={job._id} className="col-md-6 mb-3">
-              <div className="card shadow-sm p-3">
+            <div key={job._id} className="col-lg-6 col-md-12 mb-3">
+              <div className="dashboard-card">
                 <h5>{job.title}</h5>
                 <p className="text-muted">{job.companyName}</p>
                 <p><strong>Location:</strong> {job.location}</p>
-                <p><strong>Type:</strong> {job.jobType}</p>
-                <p><strong>Salary:</strong> {job.salary}</p>
-                <div className="d-flex justify-content-between">
+                <p><strong>Type:</strong> <span className="job-badge">{job.jobType}</span></p>
+                <p><span className="job-badge">{job.category}</span></p>
+                <h6 className="salary">₹ {job.salary}</h6>
+                <div className="dashboard-actions">
                   <button
-                    className="btn btn-primary btn-sm"
+                    className="btn-view"
                     onClick={() => navigate(`/jobs/${job._id}`)}
                   >
                     View
                   </button>
                   <button
-                    className="btn btn-warning btn-sm"
+                    className="btn-edit"
                     onClick={() => navigate(`/jobs/edit/${job._id}`)}
                   >
                     Edit
                   </button>
                   <button
-                    className="btn btn-danger btn-sm"
+                    className="btn-delete"
                     onClick={() => deleteJob(job._id)}
                   >
                     Delete
                   </button>
 
                    <button
-                  className="btn btn-info btn-sm"
+                  className="btn-applicants"
                  
                   onClick={() => navigate(`/recruiter/applicants/${job._id}`)}
                   >

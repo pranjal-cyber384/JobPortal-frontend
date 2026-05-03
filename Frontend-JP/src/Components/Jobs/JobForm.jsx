@@ -10,6 +10,7 @@ const CreateJobPage = () => {
     location: "",
     salary: "",
     jobType: "full-Time",
+    category: "",
     experienceLevel: "entry-level",
     skillsRequired: "",
     description: "",
@@ -34,6 +35,7 @@ const CreateJobPage = () => {
         location: "",
         salary: "",
         jobType: "full-Time",
+        category: "",
         experienceLevel: "entry-level",
         skillsRequired: "",
         description: "",
@@ -46,18 +48,17 @@ const CreateJobPage = () => {
   };
 
   return (
-    <div className="container mt-5">
+    <div className="form-page fade-in">
+      <div className="container"> 
       <div className="row justify-content-center">
         <div className="col-md-8">
 
-          <div className="card shadow-sm">
-            <div className="card-header bg-primary text-white">
-              <h4 className="mb-0">Post a New Job</h4>
-            </div>
-
+          <div className="form-card">
+            
             <div className="card-body">
 
               <form onSubmit={handleSubmit}>
+                <div className="form-grid">
                 <div className="form-group">
                   <label>Job Title</label>
                   <input
@@ -109,6 +110,25 @@ const CreateJobPage = () => {
                     <option value="remote">Remote</option>
                   </select>
                 </div>
+
+
+                <div className="form-group">
+                  <label>Categories</label>
+                  <select
+                    name="category"
+                    className="form-control"
+                    value={formData.category}
+                    onChange={handleChange}
+                  >
+                    <option value="it-tech">IT & Tech</option>
+                    <option value="creative-design">Creative Design</option>
+                    <option value="marketing">Marketing</option>
+                    <option value="finance">Finance</option>
+                  </select>
+                </div>
+
+
+
                 <div className="form-group">
                   <label>Experience Level</label>
                   <select
@@ -133,7 +153,7 @@ const CreateJobPage = () => {
                     required
                   />
                 </div>
-                <div className="form-group">
+                <div className="form-group full">
                   <label>Skills Required</label>
                   <input
                     type="text"
@@ -141,11 +161,11 @@ const CreateJobPage = () => {
                     className="form-control"
                     value={formData.skillsRequired}
                     onChange={handleChange}
-                    placeholder="React, Node, MongoDB"
+                    placeholder="e.g. React, Node.js, MongoDB"
                     required
                   />
                 </div>
-                <div className="form-group">
+                <div className="form-group full">
                   <label>Description</label>
                   <textarea
                     name="description"
@@ -156,7 +176,7 @@ const CreateJobPage = () => {
                     required
                   />
                 </div>
-                <div className="form-group">
+                <div className="form-group full">
                   <label>Deadline</label>
                   <input
                     type="date"
@@ -166,15 +186,18 @@ const CreateJobPage = () => {
                     onChange={handleChange}
                   />
                 </div>
-
-                <button type="submit" className="btn btn-primary btn-block">
-                  Post Job
-                </button>
+                 <div className="form-actions">
+                     <button type="submit" className="btn-submit">
+                        Post Job
+                     </button>
+                 </div>
+                </div>
               </form>
             </div>
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

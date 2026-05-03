@@ -76,14 +76,26 @@ const EditProfile = () => {
         });
     }
   }, []);
+
+    const [fileName, setFileName] = useState("");
     const changeHandler = (e) => {
     const { name, value, files } = e.target;
 
-    if (files) {
-      dispatch({ type: name, payload: files[0] });
-    } else {
-      dispatch({ type: name, payload: value });
-    }
+      if (files && files.length > 0) {
+    setFileName(files[0].name);
+
+    dispatch({
+      type: name,
+      payload: files[0],
+    });
+   } else {
+    setFileName("");
+
+    dispatch({
+      type: name,
+      payload: value,
+    });
+     }
     };
 
    const submitHandler = async (e) => {
@@ -127,30 +139,31 @@ const EditProfile = () => {
     };
   return (
     <>
-      <div className="container mt-5 mb-5">
-        <div className="row justify-content-center">
-          <div className="col-md-8">
-            <div className="card profile-card">
+      <div className="profile-page fade-in">
+         <div className="profile-container">
+            <div className="profile-card">
               <div className="card-body">
                 <h4 className="mb-4">Edit Profile</h4>
                 {error ? <div className="alert alert-danger">{error}</div> : null}
                 {success ? <div className="alert alert-success">{success}</div> : null}
                 <form encType="multipart/form-data" onSubmit={submitHandler}>
                   {/* Profile Image */}
-                  <div className="form-group text-center">
+                  <div className="profile-image-section">
                     <img
-                      src={`http://localhost:3000${user?.profileImage}`}
+                      src={`${import.meta.env.VITE_API_BASE_URL}${user?.profileImage}`}
                       alt="profileImage"
                       className="profile-img mb-3"
                     />
-                    <div>
+                    <div  className="file-upload-box small">
                       <input type="file"
                       name="profileImage"
                       className="form-control-file"
                       onChange={changeHandler} />
+                       <span> {fileName ? fileName : "Choose your Profile Image"}</span>
                     </div>
                   </div>
 
+                <div className="form-grid">
                   <div className="form-group">
                     <label>Name</label>
                     <input type="text"
@@ -183,18 +196,6 @@ const EditProfile = () => {
                      onChange={changeHandler} />
                    </div>
 
-                  <div className="form-group">
-                    <label>Skills</label>
-                    <input type="text"
-                     className="form-control"
-                     placeholder="e.g. React, Node, MongoDB" 
-                     name="skills"
-                     value={state.skills}
-                     onChange={changeHandler}
-                     required
-                      />
-                  </div>
-
                    <div className="form-group">
                     <label>Phone</label>
                     <input type="text"
@@ -204,6 +205,20 @@ const EditProfile = () => {
                      onChange={changeHandler}
                      required />
                   </div>
+                </div>
+                   
+                  <div className="form-grid mt-3">
+                   <div className="form-group">
+                    <label>Skills</label>
+                    <input type="text"
+                     className="form-control"
+                     placeholder="e.g. React, Node, MongoDB" 
+                     name="skills"
+                     value={state.skills}
+                     onChange={changeHandler}
+                     required
+                      />
+                   </div>
 
                    <div className="form-group">
                     <label>Education</label>
@@ -224,7 +239,7 @@ const EditProfile = () => {
                      onChange={changeHandler}
                      />
                   </div>
-
+               
                    <div className="form-group">
                     <label>Company Name</label>
                     <input type="text"
@@ -243,26 +258,39 @@ const EditProfile = () => {
                      value={state.post} 
                      onChange={changeHandler}/>
                   </div>
-
-                  <div className="form-group">
+                 </div>
+                  <div className="mt-3">
                     <label>Upload Resume</label>
+                    <div className="file-upload-box small">
                     <input type="file"
                            name= "resume"
                           className="form-control-file"
                           onChange={changeHandler} />
+                         <span> {fileName ? fileName : "📄 Choose your resume (PDF)"}</span>
+                     </div>
                   </div>
 
-                  <div className="d-flex justify-content-between mt-4">
-                    <button className="btn btn-secondary">Cancel</button>
-                    <button className="btn btn-primary">
-                         {loading ? "Updating..." : "SAVE CHANGES"}
+                  <div className="profile-actions">
+                    <button
+                         type="button"
+                         className="btn-cancel"
+                         onClick={() => navigate(-1)}
+                         >
+                          Cancel
+                    </button>
+                    <button
+                        type="submit"
+                         className="btn-save"
+                         disabled={loading}
+                         >
+                        {loading ? "Updating..." : "Save Changes"}
                     </button>
                   </div>
+                 
                 </form>
               </div>
             </div>
           </div>
-        </div>
       </div>
     </>
   );
