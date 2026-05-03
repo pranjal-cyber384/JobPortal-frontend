@@ -73,7 +73,7 @@ This backend powers a full-featured job portal where:
 ---
 
 ## 📂 Project Structure
-
+```
 server/
 │
 ├── controllers/
@@ -86,7 +86,7 @@ server/
 ├── server.js
 └── package.json
 
-
+```
 ---
 
 ## 🔌 Environment Variables

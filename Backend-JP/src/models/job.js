@@ -37,6 +37,12 @@ const jobSchema = new mongoose.Schema({
     trim: true
   },
 
+  category: {
+     type: String,
+     enum: ["it-tech", "creative-design", "marketing", "finance" ],
+     trim: true
+  },
+  
   experienceLevel: {
     type: String,
     enum: ["entry-level", "intermediate", "senior"],

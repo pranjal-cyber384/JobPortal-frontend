@@ -3,9 +3,9 @@ import jobModel from "../models/job.js";
 export const CREATE_JOB = async (req, res) => {
     try {
         const {title, description, companyName, location, salary, jobType,
-               experienceLevel, skillsRequired, deadline, status} = req.body;
+               experienceLevel, skillsRequired, deadline, status, category} = req.body;
                if (!title || !description || !companyName || !location || !salary 
-                || !jobType || !experienceLevel || !skillsRequired) {
+                || !jobType || !experienceLevel || !skillsRequired || !category) {
                 return res.status(400).json({
                     status: "failed",
                     message: "all fields are required",
@@ -16,7 +16,7 @@ export const CREATE_JOB = async (req, res) => {
                const job = await jobModel.create({
                  title, description, companyName, location,
                  salary, jobType, experienceLevel, skillsRequired,
-                 deadline, status, postedBy: req.user._id  
+                 deadline, status, category, postedBy: req.user._id  
                });
 
                res.status(200).json({
@@ -69,7 +69,7 @@ export const GET_ALL_JOBS = async (req, res) => {
         let {
             page = 1,
             limit = 10,
-            location, jobType, experienceLevel, salary, keyword,
+            location, jobType, experienceLevel, salary, keyword, category,
         } = req.query;
         page = parseInt(page);
         limit = parseInt(limit);
@@ -78,6 +78,7 @@ export const GET_ALL_JOBS = async (req, res) => {
         let filter = {};
         if (location) {filter.location = {$regex: location, $options: "i"};}
         if (jobType) {filter.jobType = jobType; }
+        if (category) {filter.category = category; }
         if (experienceLevel) { filter.experienceLevel = experienceLevel; }
         if (salary) {filter.salary = { $gte: Number(salary)}; }
         if (keyword) { filter.$or = [

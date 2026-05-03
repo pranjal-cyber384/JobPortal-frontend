@@ -94,7 +94,7 @@ export const MY_APPLICATIONS = async (req, res) => {
     let filter = {};
     filter.applicant = req.user._id;
     let query = await applicationModel.find(filter)
-    .populate("job", "title companyName")
+    .populate("job", "title companyName location")
     .skip(skip)
     .limit(limit)
     .sort({createdAt: -1});
@@ -168,7 +168,7 @@ console.log("USER:", req.user);
     let filter = {};
     filter.job = jobId
     console.log("FILTER:", filter);
-console.log("APPLICATIONS FOUND:", await applicationModel.find(filter));
+    console.log("APPLICATIONS FOUND:", await applicationModel.find(filter));
     let applicants = await applicationModel.find(filter)
     .populate("applicant", "name email skills")
     .skip(skip)
