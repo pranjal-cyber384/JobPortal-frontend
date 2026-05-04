@@ -35,7 +35,7 @@ const CreateJobPage = () => {
         location: "",
         salary: "",
         jobType: "full-Time",
-        category: "",
+        category: "it-tech",
         experienceLevel: "entry-level",
         skillsRequired: "",
         description: "",
