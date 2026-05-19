@@ -945,7 +945,7 @@ html {
     width: 100%;
   }
 }
-
+/* job form page */
 /* tighter textarea */
 .form-group textarea {
   min-height: 110px;
@@ -2054,4 +2054,21 @@ button:disabled {
   display: block;
   height: 2px;
   background: linear-gradient(90deg, #4f46e5, #06b6d4);
+}
+
+
+.loader {
+  width: 60px;
+  height: 60px;
+  border: 6px solid #ddd;
+  border-top: 6px solid #0d6efd;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 100px auto;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
 }

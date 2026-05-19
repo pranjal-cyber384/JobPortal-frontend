@@ -2,6 +2,7 @@ import jobModel from "../models/job.js";
 
 export const CREATE_JOB = async (req, res) => {
     try {
+        console.log("BODY:", req.body);
         const {title, description, companyName, location, salary, jobType,
                experienceLevel, skillsRequired, deadline, status, category} = req.body;
                if (!title || !description || !companyName || !location || !salary 

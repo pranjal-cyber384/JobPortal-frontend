@@ -23,6 +23,7 @@ import UsersPage from "./Pages/Admin/AllUsers";
 import ProtectedRoute from "./Components/ProtectedRoutes";
 import Footer from "./Components/Footer";
 import "./App.css"
+
 const App = () => {
    return (
     <>

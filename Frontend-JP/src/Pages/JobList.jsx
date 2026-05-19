@@ -18,6 +18,7 @@ const JobListPage = () => {
   const [location, setLocation] = useState("");
   const [jobType, setJobType] = useState("");
   const [category, setCategory] = useState("");
+  const [loading, setLoading] = useState(true);
 
   const locationHook = useLocation();
 
@@ -29,6 +30,8 @@ const JobListPage = () => {
 
   
   useEffect(() => {
+     const loadJob = async () => {
+      setLoading(true);
     if(keywordQuery || locationQuery || categoryQuery) {
       searchJobs({
         keyword: keywordQuery,
@@ -38,6 +41,9 @@ const JobListPage = () => {
     }
     else {
     fetchjobs(1, {});}
+    setLoading(false);
+  };
+  loadJob();
   }, [keywordQuery, locationQuery, categoryQuery]);
 
  
@@ -58,7 +64,11 @@ const JobListPage = () => {
     setCategory("");
     fetchjobs(1, {});
   };
-
+  if (loading) {
+  return (
+    <div className="loader"></div>
+  );
+}
   return (
         <div className="container job-page">
 
